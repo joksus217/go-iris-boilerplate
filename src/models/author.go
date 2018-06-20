@@ -1,10 +1,10 @@
 package models
 
 type Author struct {
-	Id   int64
-	Name string
-	City string
-	Age  int
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+	City string `json:"city"`
+	Age  int    `json:"age"`
 }
 
 //func (a Author) Validate() (Author, error) {

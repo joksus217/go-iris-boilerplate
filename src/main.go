@@ -6,16 +6,17 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 
 	"common"
-	"web/routes"
+	"routes"
 )
 
 func main() {
 	common.Init()
+	defer common.GetDB().Close()
 
 	app := iris.New()
 	app.Logger().SetLevel("debug")
 	app.OnErrorCode(iris.StatusNotFound, func(ctx iris.Context) {
-		ctx.JSON(map[string]interface{}{"state": false, "msg": "404 not found"})
+		ctx.JSON(map[string]interface{}{"status": iris.StatusNotFound, "message": "404 not found"})
 	})
 
 	//Author Routes

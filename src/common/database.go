@@ -26,6 +26,7 @@ func Init() *gorm.DB {
 	}
 
 	db.SingularTable(true)
+	db.LogMode(true)
 	DB = db
 	return DB
 }
